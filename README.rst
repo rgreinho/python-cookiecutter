@@ -2,7 +2,7 @@
 cookiecutter-python
 ===================
 
-Cookiecutter template for a python project. See https://github.com/audreyr/cookiecutter. This is inspired from the openstack cookiecutter().
+Cookiecutter template for a python project. See https://github.com/audreyr/cookiecutter. This is inspired from the openstack cookiecutter (https://git.openstack.org/openstack-dev/cookiecutter.git).
 
 * Free software: Apache license
 * pbr_: Set up to use Python Build Reasonableness
@@ -14,7 +14,7 @@ Usage
 
 Generate a Python package project::
 
-    cookiecutter https://git.openstack.org/openstack-dev/cookiecutter.git
+    cookiecutter https://github.com/rgreinho/python-cookiecutter
 
 A working git repo for pbr to work, on newer versions of cookiecutter (>= 0.7.0 released 2013-11-09) this inital commit will be done automatically. Otherwise you will need to init a repo and commit to it before doing anything else::
 
