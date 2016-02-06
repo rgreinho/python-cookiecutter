@@ -1,8 +1,13 @@
 """
-{{cookiecutter.project_short_description}}.
+{{cookiecutter.project_short_description}}
 
 Usage:
-    {{cookiecutter.repo_name}} action
+    {{cookiecutter.repo_name}} [-hv] <command>
+
+
+Options:
+    -h, --help                  shows the help screen
+    -v, --version               shows the version
 """
 
 from docopt import docopt
@@ -13,5 +18,5 @@ def main():
 
 
 if __name__ == '__main__':
-    args = docopt(__doc__version={{cookiecutter.version}})
+    args = docopt(__doc__, version='{{cookiecutter.version}}')
     main()
