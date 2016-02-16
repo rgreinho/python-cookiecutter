@@ -24,12 +24,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.coverage',
-    'sphinx.ext.viewcode',
-]
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.doctest', 'sphinx.ext.coverage', 'sphinx.ext.viewcode', ]
 
 # autodoc generation is a bit aggressive and a nuisance when doing heavy
 # text edit cycles.
@@ -44,7 +39,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'{{ cookiecutter.repo_name }}'
 copyright = u'{{ cookiecutter.year }}, {{ cookiecutter.author }}'
-version = u'{{ cookiecutter.version }}''
+version = u'{{ cookiecutter.version }}'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = True
