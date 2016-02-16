@@ -1,3 +1,6 @@
+from testtools import TestCase
+
+
 class Test{{ cookiecutter.repo_name|capitalize }}(TestCase):
     """Tests for `{{ cookiecutter.repo_name }}` module."""
 
