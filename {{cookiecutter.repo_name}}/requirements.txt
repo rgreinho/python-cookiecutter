@@ -2,5 +2,6 @@
 # of appearance. Changing the order has an impact on the overall integration
 # process, which may cause wedges in the gate later.
 
-docopt
+docopt=0.6.2
 pbr
+tabulate==0.7.5
