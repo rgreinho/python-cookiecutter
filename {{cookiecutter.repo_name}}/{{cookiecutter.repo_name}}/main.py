@@ -9,6 +9,7 @@ Options:
     -h, --help                  shows the help screen
     -v, --version               shows the version
 """
+import logging
 
 from docopt import docopt
 from docopt import DocoptExit
