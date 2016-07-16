@@ -2,11 +2,12 @@
 {{cookiecutter.project_short_description}}
 
 Usage:
-    {{cookiecutter.repo_name}} [-hv] <command>
+    {{cookiecutter.repo_name}} [-hv] [-l <log_level>] <command> [<args>...]
 
 
 Options:
     -h, --help                  shows the help screen
+    -l <log_level>              defines the log level [Default: NOTSET]
     -v, --version               shows the version
 """
 import logging
