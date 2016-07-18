@@ -7,8 +7,8 @@ Cookiecutter template for a python project. See https://github.com/audreyr/cooki
 * Free software: MIT license
 * DocOpt_: CLI made nice and easy
 * pbr_: Set up to use Python Build Reasonableness
-* TestTools_: Bette unit testing
-* Tox_ testing: Setup to easily test for Python 2.7, 3.4
+* TestTools_: Better unit testing
+* Tox_ testing: Setup to easily test for Python 2.7, 3.5
 * Sphinx_ docs: Documentation ready for generation and publication
 
 Usage
@@ -27,6 +27,7 @@ A working git repo for pbr to work, on newer versions of cookiecutter (>= 0.7.0 
 
 Then:
 
+* Check that the versions in the requirements match your needs. They might be a bit old by the time you use this cookiecutter.
 * Add the project to your GitHub account.
 
 .. _DocOpt: http://docopt.org/
