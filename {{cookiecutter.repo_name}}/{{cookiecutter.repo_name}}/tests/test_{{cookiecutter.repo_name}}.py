@@ -1,8 +1,5 @@
-from testtools import TestCase
-
-
-class Test{{ cookiecutter.repo_name|capitalize }}(TestCase):
+class Test{{ cookiecutter.repo_name|capitalize }}():
     """Tests for `{{ cookiecutter.repo_name }}` module."""
 
-    def setUp(self):
-        super(Test{{ cookiecutter.repo_name|capitalize }}, self).setUp()
+    def test_one(self):
+        assert True
