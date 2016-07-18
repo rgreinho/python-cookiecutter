@@ -2,8 +2,6 @@
 # of appearance. Changing the order has an impact on the overall integration
 # process, which may cause wedges in the gate later.
 
-q
-testtools
-tox
-wheel
-yapf
+docopt==0.6.2
+pbr==1.10.0
+tabulate==0.7.5

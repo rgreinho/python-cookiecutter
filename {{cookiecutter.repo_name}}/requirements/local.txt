@@ -1,0 +1,8 @@
+-r base.txt
+-r testing.txt
+-r docs.txt
+
+q
+tox
+wheel
+yapf
