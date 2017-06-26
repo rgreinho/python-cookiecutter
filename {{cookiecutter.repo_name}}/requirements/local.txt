@@ -1,8 +1,9 @@
--r base.txt
--r testing.txt
--r docs.txt
+-r _base.txt
+-r _tests.txt
+-r _docs.txt
 
-q
-tox
+bpython
+q==2.6
+tox==2.7.0
 wheel
-yapf
+yapf==0.16.2

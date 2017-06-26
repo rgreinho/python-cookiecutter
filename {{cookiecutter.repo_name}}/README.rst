@@ -1,42 +1,23 @@
 {{ cookiecutter.repo_name }}
-============================
+================
 
-{{ cookiecutter.project_short_description}}
+{{ cookiecutter.project_short_description }}
 
-Install
--------
-
-Using pip::
-
-    $ pip install {{ cookiecutter.repo_name }}
-
-Read the docs
--------------
-
-The latest documentation is published on Read the Docs: http://{{ cookiecutter.repo_name }}.readthedocs.org.
-
-Build the docs
---------------
-
-To build the documentation::
-
-    $ pip install -r docs-requirements.txt
-    $ python setup.py build_sphinx
-
-And then browse to doc/build/html/index.html
-
-Contribute
+Quickstart
 ----------
 
-The repository is located on Github: {{ cookiecutter.repo_name }}.
+Install `docker`_.
 
-Formatting
-^^^^^^^^^^
+Setup the full environment::
 
-For formating the files properly, please use YAPF (https://github.com/google/yapf).
+  make
 
-In the root directory of the project, run the following command:
+Setup a local dev environment::
 
-.. code-block:: bash
+  make venv
+  source venv/bin/activate
+  python setup.py develop
 
-    yapf -r -i {{ cookiecutter.repo_name }}/
+Use `make help` to see all the available make targets.
+
+.. _`docker`: https://docs.docker.com/engine/understanding-docker/
