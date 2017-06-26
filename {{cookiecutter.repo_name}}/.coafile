@@ -1,0 +1,26 @@
+[all]
+non_interactive = True
+flush_cache = True
+max_line_length = 120
+
+[all.git]
+bears = GitCommitBear
+
+[all.python]
+bears = PinRequirementsBear,PycodestyleBear,PyDocStyleBear,PyFlakesBear,PyLintBear
+files = {{cookiecutter.repo_name}}/**/[!_]*.py
+ignore = **/test_*.py
+
+# YAPF specific.
+based_on_style = pep8
+
+# PyLint specific.
+pylint_cli_options = --jobs=8
+pylint_rcfile = .pylintrc
+
+# Explain why a check is disabled.
+# broad-except                  : it does not always make the code clearer to be utlra specific.
+# invalid-name                  : too complicated to configure sanely.
+# logging-format-interpolation  : does not make any sense.
+# no-self-use                   : wrong detection (i.e. pytest class tests).
+pylint_disable = broad-except,invalid-name,logging-format-interpolation,no-self-use

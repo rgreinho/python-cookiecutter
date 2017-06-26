@@ -1,13 +1,12 @@
-===================
 cookiecutter-python
 ===================
 
-Cookiecutter template for a python project. See https://github.com/audreyr/cookiecutter. This is inspired from the openstack cookiecutter (https://git.openstack.org/openstack-dev/cookiecutter.git).
+Cookiecutter template for a python project. See https://github.com/audreyr/cookiecutter.
 
 * Free software: MIT license
-* DocOpt_: CLI made nice and easy
+* Click_: Create beautiful command line interfaces
 * pbr_: Set up to use Python Build Reasonableness
-* TestTools_: Better unit testing
+* Pytest_: Better unit testing
 * Tox_ testing: Setup to easily test for Python 2.7, 3.5
 * Sphinx_ docs: Documentation ready for generation and publication
 
@@ -30,8 +29,8 @@ Then:
 * Check that the versions in the requirements match your needs. They might be a bit old by the time you use this cookiecutter.
 * Add the project to your GitHub account.
 
-.. _DocOpt: http://docopt.org/
+.. _Click: http://click.pocoo.org/6/
 .. _pbr: http://docs.openstack.org/developer/pbr
-.. _TestTools: http://testtools.readthedocs.org/en/latest/
+.. _Pytest: https://docs.pytest.org/en/latest/
 .. _Tox: http://testrun.org/tox/
 .. _Sphinx: http://sphinx-doc.org/

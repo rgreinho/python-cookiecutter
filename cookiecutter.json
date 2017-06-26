@@ -1,9 +1,9 @@
 {
 	"repo_name": "replace with the name for the git repo",
 	"project_short_description": "Describe your project in one line.",
-	"version": "0.1.0",
 	"author": "put your name here",
 	"author_email": "put your name here",
-	"year": "replace with the current year",
+	"version": "0.1.0",
+	"year": "2017",
 	"license": "MIT"
 }

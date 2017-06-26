@@ -1,3 +1,2 @@
--r base.txt
-
-pytest
+-r _base.txt
+-r _tests.txt
