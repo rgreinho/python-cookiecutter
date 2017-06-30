@@ -6,7 +6,7 @@ TOPDIR = $(shell git rev-parse --show-toplevel)
 # Docker.
 DOCKER_IMAGE = {{ cookiecutter.repo_name }}
 DOCKER_IMAGE_VERSION = {{ cookiecutter.version }}
-DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)
+DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)-dev
 
 # External images.
 DOCKER_IMAGE_COALA = coala/base:pre
@@ -36,7 +36,7 @@ clean: ## Remove unwanted files in project (!DESTRUCTIVE!)
 	cd $(TOPDIR); git clean -ffdx && git reset --hard
 
 docker-build: Dockerfile ## Build a docker development image
-	@docker build -t $(DOCKER_IMAGE_FULL)-dev .
+	@docker build -t $(DOCKER_IMAGE_FULL) .
 
 docker-clean:
 	@echo "Not implemented"

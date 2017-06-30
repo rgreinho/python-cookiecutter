@@ -55,7 +55,7 @@ class Hello(AbstractCommand):
         super(Hello, self).__init__(command_args, global_args)
 
     def _execute(self):
-        """Internal execution of the command."""
+        """Define the internal execution of the command."""
         click.echo('Hey {}!'.format(self.args['name']))
 
 
