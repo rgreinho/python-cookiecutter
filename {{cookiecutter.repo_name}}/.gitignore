@@ -33,4 +33,5 @@ pip-log.txt
 sdist/
 target/
 var/
+venv/
 __pycache__/
