@@ -57,6 +57,7 @@ venv: venv/bin/activate ## Setup local venv
 venv/bin/activate: requirements/local.txt
 	test -d venv || virtualenv -p $(PYTHON_EXE) venv
 	. venv/bin/activate; pip install -U pip; pip install -r requirements/local.txt
+	. venv/bin/activate; python setup.py develop
 
 wheel: docker-build ## Build a wheel package
 	$(DOCKER_RUN_CMD) python setup.py bdist_wheel
