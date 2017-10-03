@@ -4,6 +4,6 @@
 
 bpython
 q==2.6
-tox==2.7.0
+tox==2.9.1
 wheel
-yapf==0.16.2
+yapf==0.18.0
