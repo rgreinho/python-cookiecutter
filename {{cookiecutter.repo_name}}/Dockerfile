@@ -1,4 +1,4 @@
-FROM python:3.6.1-slim
+FROM python:3.6.2-slim
 MAINTAINER Rémy Greinhofer <remy.greinhofer@gmail.com>
 
 # Install system packages.

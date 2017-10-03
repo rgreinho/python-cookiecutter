@@ -45,10 +45,10 @@ docs: ## Build documentation
 	$(DOCKER_RUN_CMD) sphinx-build -W -b html -d docs/build/doctrees docs/source/ docs/build/html
 
 format: ## Format the codebase using YAPF
-	$(DOCKER_RUN_CMD) yapf -r -i .
+	$(DOCKER_RUN_CMD) yapf -r -i {{ cookiecutter.repo_name }}
 
 format-check: ## Check the code formatting using YAPF
-	$(DOCKER_RUN_CMD) exit $$(yapf -r -d .)
+	$(DOCKER_RUN_CMD) yapf -r -d {{ cookiecutter.repo_name }}
 
 setup: docker-build ## Setup the full environment (default)
 
@@ -56,8 +56,8 @@ venv: venv/bin/activate ## Setup local venv
 
 venv/bin/activate: requirements/local.txt
 	test -d venv || virtualenv -p $(PYTHON_EXE) venv
-	. venv/bin/activate; pip install -U pip; pip install -r requirements/local.txt
-	. venv/bin/activate; python setup.py develop
+	. venv/bin/activate && pip install -U pip && pip install -r requirements/local.txt
+	. venv/bin/activate && python setup.py develop
 
 wheel: docker-build ## Build a wheel package
 	$(DOCKER_RUN_CMD) python setup.py bdist_wheel
