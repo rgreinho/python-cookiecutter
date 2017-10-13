@@ -4,10 +4,7 @@ MAINTAINER Rémy Greinhofer <remy.greinhofer@gmail.com>
 # Install system packages.
 RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-
     git \
-
-  # Cleaning up.
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
