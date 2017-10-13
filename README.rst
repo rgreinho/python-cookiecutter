@@ -5,10 +5,21 @@ Cookiecutter template for a python project. See https://github.com/audreyr/cooki
 
 * Free software: MIT license
 * Click_: Create beautiful command line interfaces
-* pbr_: Set up to use Python Build Reasonableness
+* PBR_: Set up to use Python Build Reasonableness
 * Pytest_: Better unit testing
-* Tox_ testing: Setup to easily test for Python 2.7, 3.5
+* Tox_ testing: Easily setup tests for Python 3.5, 3.6
 * Sphinx_ docs: Documentation ready for generation and publication
+* All the administrative tasks are defined in the `Makefile`
+* Docker_: Containerize the project
+* coala_: Implement static analyzers through the use of
+  * Git Commit format checker
+  * Pin Requirements checker
+  * Pycodestyle
+  * PyDocStyle
+  * PyFlakes
+  * PyLint
+
+* Anyconfig_ to read and validate the configuration file
 
 Usage
 -----
@@ -29,8 +40,11 @@ Then:
 * Check that the versions in the requirements match your needs. They might be a bit old by the time you use this cookiecutter.
 * Add the project to your GitHub account.
 
+.. _Anyconfig: https://github.com/ssato/python-anyconfig
 .. _Click: http://click.pocoo.org/6/
-.. _pbr: http://docs.openstack.org/developer/pbr
+.. _coala: https://coala.io/
+.. _Docker: https://www.docker.com/
+.. _PBR: http://docs.openstack.org/developer/pbr
 .. _Pytest: https://docs.pytest.org/en/latest/
 .. _Tox: http://testrun.org/tox/
 .. _Sphinx: http://sphinx-doc.org/

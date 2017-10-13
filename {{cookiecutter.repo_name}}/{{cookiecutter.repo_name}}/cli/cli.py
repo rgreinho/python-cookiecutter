@@ -1,8 +1,11 @@
 """Define the top-level cli command."""
+import os
+
 import click
 from pbr import version
 
 from {{ cookiecutter.repo_name }}.cli.base import AbstractCommand
+from {{ cookiecutter.repo_name }} import config
 
 # Retrieve the project version from PBR.
 try:
@@ -11,6 +14,7 @@ try:
 except AttributeError:
     __version__ = None
 
+APP_NAME = '{{ cookiecutter.repo_name }}'
 
 @click.group()
 @click.version_option(version=__version__)
@@ -25,6 +29,12 @@ except AttributeError:
 def cli(ctx, log_level):
     """Manage CLI commands."""
     ctx.obj = {**ctx.params}
+    ctx.auto_envvar_prefix = '{{ cookiecutter.prefix|upper }}'
+
+    # Load defaults from configuration file if any.
+    cfg_path = os.path.join(click.get_app_dir(APP_NAME), APP_NAME+'.conf')
+    cfg = cfg_path if os.path.exists(cfg_path) else None
+    ctx.default_map = config.load(cfg, with_defaults=True, validate=True)
 
 
 @click.command()
@@ -34,7 +44,7 @@ def hello_world():
 
 
 @click.command()
-@click.argument('name', default='you')
+@click.option('--name')
 @click.pass_context
 def hello(ctx, name):
     """Greet somebody."""
