@@ -1,0 +1,70 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.2
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - deps-{{ checksum "requirements/local.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - deps-
+
+      - run:
+          name: install dependencies
+          command: make venv
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: deps-{{ checksum "requirements/local.txt" }}
+
+
+      # This test is temporary. As of 2017/10/30, a bug in the coala:0.11 docker image prevents us to use the YapfBear
+      # for testing the formating. Therefore the check was added here until they release the next version (and
+      # hopefully fix the issue).
+      - run:
+          name: check the formatting (temporary due to coala bug)
+          command: |
+            . venv/bin/activate
+            tox -e yapf
+
+      - run:
+          name: run unit tests
+          command: |
+            . venv/bin/activate
+            tox
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+
+      - run:
+          name: run doc tests
+          command: |
+            . venv/bin/activate
+            tox -e docs
+  coala:
+    docker:
+      - image: coala/base:0.11
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run:
+          name: Run coala
+          command: coala --ci
+
+workflows:
+  version: 2
+  gates:
+    jobs:
+      - coala
+      - build
