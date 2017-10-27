@@ -1,7 +1,9 @@
-# Misc.
-PYTHON_EXE = python3
+# Makefile variables.
 SHELL = /bin/bash
+
+# Misc.
 TOPDIR = $(shell git rev-parse --show-toplevel)
+YAPF_EXCLUDE=*.tox/*,*venv/*
 
 # Docker.
 DOCKER_IMAGE = {{ cookiecutter.repo_name }}
@@ -45,10 +47,10 @@ docs: ## Build documentation
 	$(DOCKER_RUN_CMD) sphinx-build -W -b html -d docs/build/doctrees docs/source/ docs/build/html
 
 format: ## Format the codebase using YAPF
-	$(DOCKER_RUN_CMD) yapf -r -i {{ cookiecutter.repo_name }}
+	$(DOCKER_RUN_CMD) yapf -r -i -e{$(YAPF_EXCLUDE)} .
 
 format-check: ## Check the code formatting using YAPF
-	$(DOCKER_RUN_CMD) yapf -r -d {{ cookiecutter.repo_name }}
+	$(DOCKER_RUN_CMD) yapf -r -d -e{$(YAPF_EXCLUDE)} .
 
 setup: docker-build ## Setup the full environment (default)
 
@@ -62,4 +64,4 @@ venv/bin/activate: requirements/local.txt
 wheel: docker-build ## Build a wheel package
 	$(DOCKER_RUN_CMD) python setup.py bdist_wheel
 
-.PHONY: ci-coala ci-docs ci-tests clean docs format format-check service-api setup wheel
+.PHONY: ci-coala ci-docs ci-tests clean docker-build docker-clean docs format format-check service-api setup wheel
