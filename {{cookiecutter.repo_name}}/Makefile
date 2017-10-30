@@ -61,7 +61,16 @@ venv/bin/activate: requirements/local.txt
 	. venv/bin/activate && pip install -U pip && pip install -r requirements/local.txt
 	. venv/bin/activate && python setup.py develop
 
+venv-check-deps: venv ## Check whether the dependencies are up to date
+	@{ \
+		. venv/bin/activate && OUTDATED_PKGS=$$(pip list -o --format=columns); \
+		if [ -n "$${OUTDATED_PKGS}" ]; then \
+			echo "$${OUTDATED_PKGS}"; \
+			exit 1; \
+		fi \
+	}
+
 wheel: docker-build ## Build a wheel package
 	$(DOCKER_RUN_CMD) python setup.py bdist_wheel
 
-.PHONY: ci-coala ci-docs ci-tests clean docker-build docker-clean docs format format-check service-api setup wheel
+.PHONY: ci-coala ci-docs ci-tests clean docker-build docker-clean docs format format-check service-api setup wheel venv-check
