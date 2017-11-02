@@ -8,7 +8,8 @@ Cookiecutter template for a python project. See https://github.com/audreyr/cooki
 * Anyconfig_: Read and validate configuration file
 * CircleCI_: Continuous Integration for your project
 * Click_: Create beautiful command line interfaces
-* coala_: Implement static analyzers through the use of
+* coala_: Implement static analyzers through the use of:
+
   * Git Commit format checker
   * Pin Requirements checker
   * Pycodestyle
@@ -17,10 +18,12 @@ Cookiecutter template for a python project. See https://github.com/audreyr/cooki
   * PyLint
 * Docker_: Containerize the project
 * EditorConfig_: Maintain consistent coding styles between different editors
+* Github templates: Create consistent issues and PRs
 * PBR_: Set up to use Python Build Reasonableness
 * Pytest_: Better unit testing
 * Sphinx_: Documentation ready for generation and publication
 * Tox_: Easily setup tests for Python 3.6
+* YAPF_: Automatic code formatting
 
 Usage
 -----
@@ -51,3 +54,4 @@ Then:
 .. _Pytest: https://docs.pytest.org/en/latest/
 .. _Sphinx: http://sphinx-doc.org/
 .. _Tox: http://testrun.org/tox/
+.. _YAPF: https://github.com/google/yapf
