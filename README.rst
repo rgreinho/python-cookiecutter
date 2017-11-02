@@ -4,13 +4,10 @@ cookiecutter-python
 Cookiecutter template for a python project. See https://github.com/audreyr/cookiecutter.
 
 * Free software: MIT license
-* Click_: Create beautiful command line interfaces
-* PBR_: Set up to use Python Build Reasonableness
-* Pytest_: Better unit testing
-* Tox_ testing: Easily setup tests for Python 3.5, 3.6
-* Sphinx_ docs: Documentation ready for generation and publication
 * All the administrative tasks are defined in the `Makefile`
-* Docker_: Containerize the project
+* Anyconfig_: Read and validate configuration file
+* CircleCI_: Continuous Integration for your project
+* Click_: Create beautiful command line interfaces
 * coala_: Implement static analyzers through the use of
   * Git Commit format checker
   * Pin Requirements checker
@@ -18,8 +15,12 @@ Cookiecutter template for a python project. See https://github.com/audreyr/cooki
   * PyDocStyle
   * PyFlakes
   * PyLint
-
-* Anyconfig_ to read and validate the configuration file
+* Docker_: Containerize the project
+* EditorConfig_: Maintain consistent coding styles between different editors
+* PBR_: Set up to use Python Build Reasonableness
+* Pytest_: Better unit testing
+* Sphinx_: Documentation ready for generation and publication
+* Tox_: Easily setup tests for Python 3.6
 
 Usage
 -----
@@ -41,10 +42,12 @@ Then:
 * Add the project to your GitHub account.
 
 .. _Anyconfig: https://github.com/ssato/python-anyconfig
+.. _CircleCI: https://circleci.com/
 .. _Click: http://click.pocoo.org/6/
 .. _coala: https://coala.io/
 .. _Docker: https://www.docker.com/
+.. _EditorConfig: http://editorconfig.org/
 .. _PBR: http://docs.openstack.org/developer/pbr
 .. _Pytest: https://docs.pytest.org/en/latest/
-.. _Tox: http://testrun.org/tox/
 .. _Sphinx: http://sphinx-doc.org/
+.. _Tox: http://testrun.org/tox/

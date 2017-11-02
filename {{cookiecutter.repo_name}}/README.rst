@@ -16,7 +16,6 @@ Setup a local dev environment::
 
   make venv
   source venv/bin/activate
-  python setup.py develop
 
 Use `make help` to see all the available make targets.
 
