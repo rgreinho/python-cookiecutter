@@ -37,6 +37,11 @@ ci-tests: ## Run the unit tests
 clean: ## Remove unwanted files in project (!DESTRUCTIVE!)
 	cd $(TOPDIR); git clean -ffdx && git reset --hard
 
+conda: conda-venv/bin/activate ## Setup a conda environment
+
+conda-venv/bin/activate:
+	@conda env create --prefix=conda-venv python=3
+
 docker-build: Dockerfile ## Build a docker development image
 	@docker build -t $(DOCKER_IMAGE_FULL) .
 
@@ -57,8 +62,8 @@ setup: docker-build ## Setup the full environment (default)
 venv: venv/bin/activate ## Setup local venv
 
 venv/bin/activate: requirements/local.txt
-	test -d venv || virtualenv -p $(PYTHON_EXE) venv
-	. venv/bin/activate && pip install -U pip && pip install -r requirements/local.txt
+	test -d venv || python3 -m venv venv
+	. venv/bin/activate && pip install -U pip setuptools && pip install -r requirements/local.txt
 	. venv/bin/activate && python setup.py develop
 
 venv-check-deps: venv ## Check whether the dependencies are up to date

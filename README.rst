@@ -16,6 +16,8 @@ Cookiecutter template for a python project. See https://github.com/audreyr/cooki
   * PyDocStyle
   * PyFlakes
   * PyLint
+
+* Conda_: Support for conda package manager
 * Docker_: Containerize the project
 * EditorConfig_: Maintain consistent coding styles between different editors
 * Github templates: Create consistent issues and PRs
@@ -48,6 +50,7 @@ Then:
 .. _CircleCI: https://circleci.com/
 .. _Click: http://click.pocoo.org/6/
 .. _coala: https://coala.io/
+.. _conda: https://conda.io/docs/index.html
 .. _Docker: https://www.docker.com/
 .. _EditorConfig: http://editorconfig.org/
 .. _PBR: http://docs.openstack.org/developer/pbr
