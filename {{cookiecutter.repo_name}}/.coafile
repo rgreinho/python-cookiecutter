@@ -20,7 +20,8 @@ pylint_rcfile = .pylintrc
 
 # Explain why a check is disabled.
 # broad-except                  : it does not always make the code clearer to be utlra specific.
+# import-error                  : does not work from within coala container
 # invalid-name                  : too complicated to configure sanely.
 # logging-format-interpolation  : does not make any sense.
 # no-self-use                   : wrong detection (i.e. pytest class tests).
-pylint_disable = broad-except,invalid-name,logging-format-interpolation,no-self-use
+pylint_disable = broad-except,import-error,invalid-name,logging-format-interpolation,no-self-use

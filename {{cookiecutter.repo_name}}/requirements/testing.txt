@@ -1,2 +1,0 @@
--r _base.txt
--r _tests.txt

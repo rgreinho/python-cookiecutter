@@ -1,4 +1,0 @@
-anyconfig==0.9.3
-click==6.7
-pbr==3.1.1
-tabulate==0.8.1
