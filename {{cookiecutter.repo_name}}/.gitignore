@@ -7,14 +7,16 @@
 *.py[cod]
 *.so
 *.spec
+.DS_Store
+.Python
 .cache
 .coverage
 .coverage.*
 .eggs/
 .idea/
 .installed.cfg
-.Python
 .tox/
+__pycache__/
 build/
 coverage.xml
 develop-eggs/
@@ -34,4 +36,3 @@ sdist/
 target/
 var/
 venv/
-__pycache__/

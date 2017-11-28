@@ -7,8 +7,8 @@ YAPF_EXCLUDE=*.tox/*,*venv/*
 
 # Docker.
 DOCKER_IMAGE = {{ cookiecutter.repo_name }}
-DOCKER_IMAGE_VERSION = {{ cookiecutter.version }}
-DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)-dev
+DOCKER_IMAGE_VERSION ?= $$(git describe)
+DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)
 
 # External images.
 DOCKER_IMAGE_COALA = coala/base:pre
@@ -24,7 +24,7 @@ help: # Display help
 			printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF \
 		}' $(MAKEFILE_LIST) | sort
 
-ci-coala: ## Run the static analyzers
+ci-linters: ## Run the static analyzers
 	@docker pull $(DOCKER_IMAGE_COALA)
 	@docker run -t -v=$$(pwd):/app --workdir=/app --rm $(DOCKER_IMAGE_COALA) coala --ci
 
@@ -45,8 +45,8 @@ conda-venv/bin/activate:
 docker-build: Dockerfile ## Build a docker development image
 	@docker build -t $(DOCKER_IMAGE_FULL) .
 
-docker-clean:
-	@echo "Not implemented"
+docker-clean: ## Remove all docker images built for this project (!DESTRUCTIVE!)
+	@docker image rm -f $$(docker image ls --filter reference=$(DOCKER_IMAGE) -q)
 
 docs: ## Build documentation
 	$(DOCKER_RUN_CMD) sphinx-build -W -b html -d docs/build/doctrees docs/source/ docs/build/html
@@ -61,10 +61,10 @@ setup: docker-build ## Setup the full environment (default)
 
 venv: venv/bin/activate ## Setup local venv
 
-venv/bin/activate: requirements/local.txt
+venv/bin/activate: requirements.txt
 	test -d venv || python3 -m venv venv
-	. venv/bin/activate && pip install -U pip setuptools && pip install -r requirements/local.txt
-	. venv/bin/activate && python setup.py develop
+	. venv/bin/activate && pip install -U pip setuptools && pip install -r requirements.txt
+	. venv/bin/activate && pip install -e .[docs,local,testing]
 
 venv-check-deps: venv ## Check whether the dependencies are up to date
 	@{ \

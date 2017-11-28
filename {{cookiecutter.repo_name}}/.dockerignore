@@ -1,0 +1,6 @@
+*.egg-info/
+.git/
+.tox/
+build/
+dist/
+venv/

@@ -13,7 +13,7 @@ RUN mkdir -p /code /requirements
 WORKDIR /code
 
 # Copy the requirements files.
-COPY requirements/* /requirements/
+COPY requirements.txt /requirements/
 
 # Install the pip packages.
-RUN pip install -q -r /requirements/local.txt
+RUN pip install -q -r /requirements/requirements.txt tox==2.9.1
