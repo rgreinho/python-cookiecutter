@@ -7,12 +7,17 @@ from pbr import version
 from {{ cookiecutter.repo_name }}.cli.base import AbstractCommand
 from {{ cookiecutter.repo_name }} import config
 
-# Retrieve the project version from PBR.
+# Retrieve the project version from packaging.
 try:
-    version_info = version.VersionInfo('processor-cli')
-    __version__ = version_info.release_string()
-except AttributeError:
+    try:
+        version_info = version.VersionInfo('{{ cookiecutter.repo_name }}')
+        __version__ = version_info.release_string()
+    except pkg_resources.DistributionNotFound:
+        distribution_info = pkg_resources.get_distribution('pip')
+        __version__ = distribution_info.version
+except Exception:
     __version__ = None
+
 
 APP_NAME = '{{ cookiecutter.repo_name }}'
 

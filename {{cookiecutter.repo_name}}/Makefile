@@ -11,7 +11,7 @@ DOCKER_IMAGE_VERSION ?= $$(git describe)
 DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)
 
 # External images.
-DOCKER_IMAGE_COALA = coala/base:pre
+DOCKER_IMAGE_COALA = coala/base:0.11
 
 # Docker run command.
 DOCKER_RUN_CMD = docker run -t -v=$$(pwd):/code --rm $(DOCKER_IMAGE_FULL)
