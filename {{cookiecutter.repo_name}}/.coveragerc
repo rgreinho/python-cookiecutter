@@ -3,3 +3,4 @@ omit =
     *__init__.py
     {{ cookiecutter.repo_name }}/main.py
     {{ cookiecutter.repo_name }}/tests/*
+    {{ cookiecutter.repo_name }}/cli/cli.py
