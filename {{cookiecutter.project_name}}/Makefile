@@ -6,7 +6,7 @@ TOPDIR = $(shell git rev-parse --show-toplevel)
 YAPF_EXCLUDE=*.tox/*,*venv/*
 
 # Docker.
-DOCKER_IMAGE = {{ cookiecutter.repo_name }}
+DOCKER_IMAGE = {{ cookiecutter.project_name }}
 DOCKER_IMAGE_VERSION ?= $$(git describe)
 DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)
 

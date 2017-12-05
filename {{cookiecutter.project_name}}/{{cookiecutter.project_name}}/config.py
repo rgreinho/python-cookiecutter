@@ -1,5 +1,4 @@
-import os
-
+"""Define the anyconfig configuration."""
 import anyconfig
 
 CONFIGURATION_DEFAULTS = {'hello': {'name': 'stranger'}}

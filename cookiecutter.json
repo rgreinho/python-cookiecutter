@@ -1,6 +1,6 @@
 {
-	"repo_name": "repository",
-	"project_short_description": "Describe your project in one line",
+	"project_name": "project",
+	"project_short_description": "Describe your project in one line.",
   "prefix": "ORG",
 	"author": "author_name",
 	"author_email": "author@company.com",
