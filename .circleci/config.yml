@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  build:
+    machine: true
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Prepare the test environment
+          command: |
+            git config --global user.email "test@example.com"
+            git config --global user.name "Test user"
+            pyenv install 3.6.2
+            pyenv global 3.6.2
+            make ci-prep-env
+
+      - run:
+          name: Run the tests
+          command: make ci-tests
