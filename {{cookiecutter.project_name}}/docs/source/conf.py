@@ -37,7 +37,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'{{ cookiecutter.repo_name }}'
+project = u'{{ cookiecutter.project_name }}'
 copyright = u'{{ cookiecutter.year }}, {{ cookiecutter.author }}'
 version = u'{{ cookiecutter.version }}'
 

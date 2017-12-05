@@ -8,7 +8,7 @@ bears = GitCommitBear
 
 [all.python]
 bears = PinRequirementsBear,PycodestyleBear,PyDocStyleBear,PyFlakesBear,PyLintBear
-files = {{cookiecutter.repo_name}}/**/[!_]*.py
+files = {{ cookiecutter.project_name }}/**/[!_]*.py
 ignore = **/test_*.py
 
 # YAPF specific.

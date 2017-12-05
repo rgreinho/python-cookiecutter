@@ -1,7 +1,7 @@
 Contributing
 ============
 
-* We are interested in various different kinds of improvement for ``{{ cookiecutter.repo_name }}``; please feel free to raise an `Issue`_ if you would like to work on something major to ensure efficient collaboration and avoid duplicate effort.
+* We are interested in various different kinds of improvement for ``{{ cookiecutter.project_name }}``; please feel free to raise an `Issue`_ if you would like to work on something major to ensure efficient collaboration and avoid duplicate effort.
 * Create a topic branch from where you want to base your work.
 * Make sure you have added tests for your changes.
 * Run all the tests to ensure nothing else was accidentally broken.

@@ -47,4 +47,4 @@ ask. We're here to help! -->
 
 <!-- Place the *FULL* URL of the issue here it this PR fixes an existing issue. -->
 
-Fixes: https://github.com/{{ cookiecutter.author }}/{{ cookiecutter.repo_name }}/<issue_number>
+Fixes: https://github.com/{{ cookiecutter.author }}/{{ cookiecutter.project_name }}/<issue_number>
