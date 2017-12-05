@@ -56,3 +56,6 @@ ChangeLog
 # Cookiecutter
 output/
 boilerplate/
+
+test-output/
+venv/
