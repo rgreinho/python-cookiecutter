@@ -1,9 +1,9 @@
 {
-	"repo_name": "Name for the git repo",
+	"repo_name": "repository",
 	"project_short_description": "Describe your project in one line",
-  "prefix": "Short prefix to use for the project (i.e. 'ORG')",
-	"author": "Put your name here",
-	"author_email": "Put your email here",
+  "prefix": "ORG",
+	"author": "author_name",
+	"author_email": "author@company.com",
 	"version": "0.0.1",
 	"year": "2017",
 	"license": "MIT"
