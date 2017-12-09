@@ -14,8 +14,8 @@ help: # Display help
 		}' $(MAKEFILE_LIST) | sort
 
 ci-prep-env: venv # Prep the test environment
-	mkdir -p test-output
-	. venv/bin/activate && cd test-output && cookiecutter --no-input --overwrite-if-exists ../
+	mkdir -p $(TESTDIR)
+	. venv/bin/activate && cd $(TESTDIR) && cookiecutter --no-input --overwrite-if-exists ../
 	cd $(TESTDIR)/project && make
 
 ci-tests: ci-prep-env ## Run the unit tests
