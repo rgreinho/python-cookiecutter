@@ -53,8 +53,8 @@ ci-format: ## Check the code formatting using YAPF
 
 .PHONY: ci-linters
 ci-linters: ## Run the static analyzers
-	@docker pull $(DOCKER_IMAGE_COALA)
-	@docker run -t -v=$$(pwd):/app --workdir=/app --rm $(DOCKER_IMAGE_COALA) coala --ci
+	@docker pull $(DOCKER_IMG_COALA)
+	@docker run -t -v=$$(pwd):/app --workdir=/app --rm $(DOCKER_IMG_COALA) coala --ci
 
 .PHONY: ci-tests
 ci-tests: ## Run the unit tests
