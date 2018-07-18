@@ -11,7 +11,7 @@ TAG ?= $(shell git describe)$(SUFFIX)
 
 # Misc.
 TOPDIR = $(shell git rev-parse --show-toplevel)
-YAPF_EXCLUDE=*.tox/*,*venv/*
+YAPF_EXCLUDE=*.eggs/*,*.tox/*,*venv/*
 
 # Docker.
 DOCKERFILE = Dockerfile$(SUFFIX)
