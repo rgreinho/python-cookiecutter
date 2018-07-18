@@ -20,17 +20,6 @@ DOCKER_REPO = $(DOCKER_ORG)/$(PROJECT_NAME)
 DOCKER_IMG = $(DOCKER_REPO):$(TAG)
 DOCKER_IMG_COALA = coala/base:0.11
 
-# Docker.
-# DOCKER_IMAGE = {{ cookiecutter.project_name }}
-# DOCKER_IMAGE_VERSION ?= $$(git describe)
-# DOCKER_IMAGE_FULL = $(DOCKER_IMAGE):$(DOCKER_IMAGE_VERSION)
-
-# External images.
-# DOCKER_IMAGE_COALA = coala/base:0.11
-
-# Docker run command.
-# DOCKER_RUN_CMD = docker run -t -v=$$(pwd):/code --rm $(DOCKER_IMAGE_FULL)
-
 # Run commands.
 DOCKER_RUN_CMD = docker run --rm -t -v=$$(pwd):/usr/src/app $(DOCKER_IMG)
 LOCAL_RUN_CMD = source venv/bin/activate &&
@@ -52,7 +41,7 @@ help: # Display help
 		}' $(MAKEFILE_LIST) | sort
 
 .PHONY: ci
-ci: ci-docs ci-format ci-linters ci-tests
+ci: ci-format ci-linters ci-tests
 
 .PHONY: ci-docs
 ci-docs: ## Ensure the documentation builds
@@ -85,7 +74,7 @@ docker-clean: ## Remove all docker images built for this project (!DESTRUCTIVE!)
 
 .PHONY: docs
 docs: ## Build documentation
-	$(RUN_CMD) sphinx-build -W -b html -d docs/build/doctrees docs/source/ docs/build/html
+	$(RUN_CMD) python setup.py build_sphinx
 
 .PHONY: format
 format: ## Format the codebase using YAPF
