@@ -29,7 +29,7 @@ def getLogLevel(level):
     return levels.get(level.upper(), logging.NOTSET)
 
 
-class AbstractCommand(object):
+class AbstractCommand:
     """Base class for the commands."""
 
     __metaclass__ = abc.ABCMeta

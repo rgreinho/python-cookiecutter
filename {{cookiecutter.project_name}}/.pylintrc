@@ -20,10 +20,12 @@ confidence=
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 # disable=raising-string,round-builtin,reload-builtin,useless-suppression,coerce-method,old-ne-operator,nonzero-method,old-division,oct-method,getslice-method,filter-builtin-not-iterating,xrange-builtin,map-builtin-not-iterating,dict-iter-method,standarderror-builtin,print-statement,execfile-builtin,zip-builtin-not-iterating,hex-method,coerce-builtin,no-absolute-import,long-builtin,old-raise-syntax,delslice-method,old-octal-literal,reduce-builtin,import-star-module-level,unicode-builtin,apply-builtin,suppressed-message,cmp-builtin,backtick,indexing-exception,intern-builtin,input-builtin,parameter-unpacking,unpacking-in-except,range-builtin-not-iterating,long-suffix,file-builtin,setslice-method,cmp-method,dict-view-method,next-method-called,metaclass-assignment,using-cmp-argument,basestring-builtin,raw_input-builtin,unichr-builtin,buffer-builtin
-
-# The enable/disabled modules are controlled by coala.
-# But in case you want to use pylint directly, uncomment that line.
-# disable=broad-except,invalid-name,logging-format-interpolation,no-self-use
+# Explain why a check is disabled.
+# broad-except                  : it does not always make the code clearer to be utlra specific.
+# invalid-name                  : too complicated to configure sanely.
+# logging-format-interpolation  : does not make any sense.
+# no-self-use                   : wrong detection (i.e. pytest class tests).
+disable = broad-except,invalid-name,logging-format-interpolation,no-self-use,
 
 [REPORTS]
 
