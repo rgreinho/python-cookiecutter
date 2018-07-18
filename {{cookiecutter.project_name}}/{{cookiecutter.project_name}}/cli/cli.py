@@ -19,7 +19,6 @@ try:
 except Exception:
     __version__ = None
 
-
 APP_NAME = '{{ cookiecutter.project_name }}'
 
 
@@ -41,7 +40,7 @@ def cli(ctx, log_level):
     ctx.auto_envvar_prefix = '{{ cookiecutter.prefix|upper }}'
 
     # Load defaults from configuration file if any.
-    cfg_path = os.path.join(click.get_app_dir(APP_NAME), APP_NAME+'.conf')
+    cfg_path = os.path.join(click.get_app_dir(APP_NAME), APP_NAME + '.conf')
     cfg = cfg_path if os.path.exists(cfg_path) else None
     ctx.default_map = config.load(cfg, with_defaults=True, validate=True)
 
