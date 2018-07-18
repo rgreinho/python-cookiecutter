@@ -22,7 +22,7 @@ ci-prep-env: venv # Prep the test environment
 
 .PHONY: ci-tests
 ci-tests: ci-prep-env ## Run the unit tests
-	cd $(TESTDIR)/project && make ci
+	cd $(TESTDIR)/project && make venv ci
 
 .PHONY: clean
 clean: ## Remove unwanted files in project (!DESTRUCTIVE!)
