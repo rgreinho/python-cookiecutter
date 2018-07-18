@@ -51,10 +51,8 @@ help: # Display help
 			printf "\033[36m%-30s\033[0m %s\n", $$1, $$NF \
 		}' $(MAKEFILE_LIST) | sort
 
-.PHONY: ci-linters
-ci-linters: ## Run the static analyzers
-	@docker pull $(DOCKER_IMAGE_COALA)
-	@docker run -t -v=$$(pwd):/app --workdir=/app --rm $(DOCKER_IMAGE_COALA) coala --ci
+.PHONY: ci
+	ci: ci-docs ci-format ci-linters ci-tests
 
 .PHONY: ci-docs
 ci-docs: ## Ensure the documentation builds
@@ -63,6 +61,11 @@ ci-docs: ## Ensure the documentation builds
 .PHONY: ci-format
 ci-format: ## Check the code formatting using YAPF
 	$(RUN_CMD) yapf -r -d -e{$(YAPF_EXCLUDE)} .
+
+.PHONY: ci-linters
+ci-linters: ## Run the static analyzers
+	@docker pull $(DOCKER_IMAGE_COALA)
+	@docker run -t -v=$$(pwd):/app --workdir=/app --rm $(DOCKER_IMAGE_COALA) coala --ci
 
 .PHONY: ci-tests
 ci-tests: ## Run the unit tests
