@@ -1,10 +1,10 @@
 {
-	"project_name": "project",
-	"project_short_description": "Describe your project in one line.",
+  "project_name": "project",
+  "project_short_description": "Describe your project in one line.",
   "prefix": "ORG",
-	"author": "author_name",
-	"author_email": "author@company.com",
-	"version": "0.0.1",
-	"year": "2017",
-	"license": "MIT"
+  "author": "author_name",
+  "author_email": "author@company.com",
+  "version": "0.1.0",
+  "year": "2017",
+  "license": "MIT"
 }
