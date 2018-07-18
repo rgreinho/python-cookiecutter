@@ -52,7 +52,7 @@ help: # Display help
 		}' $(MAKEFILE_LIST) | sort
 
 .PHONY: ci
-	ci: ci-docs ci-format ci-linters ci-tests
+ci: ci-docs ci-format ci-linters ci-tests
 
 .PHONY: ci-docs
 ci-docs: ## Ensure the documentation builds
