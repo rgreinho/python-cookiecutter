@@ -1,41 +1,52 @@
-<!--- Provide a general summary of the issue in the Title above -->
+<!-- Provide a general summary of the issue in the Title above. -->
+
 Issue Type
 ----------
-<!-- Choose the appropriate type -->
+<!-- Define the type of issue you are reporting. -->
 - Bug report
 - Feature request
 
-Expected Behavior
------------------
-<!--- If you're describing a bug, tell us what should happen -->
-<!--- If you're suggesting a change/improvement, tell us how it should work -->
-
 Current Behavior
 ----------------
-<!--- If describing a bug, tell us what happens instead of the expected behavior -->
-<!--- If suggesting a change/improvement, explain the difference from current behavior -->
+<!-- Tell us what is currently happening. -->
+
+
+Expected Behavior
+-----------------
+<!--
+If you are reporting a bug, tell us what should happen.
+If you are suggesting a change/improvement, tell us how it should work,
+how it differs from the current implementation.
+-->
+
 
 Possible Solution
 -----------------
-<!--- Not obligatory, but suggest a fix/reason for the bug, -->
-<!--- or ideas how to implement the addition or change -->
+<!--
+Suggest a fix/reason for the bug, or ideas how to implement the
+addition or change. Delete if not applicable/relevant.
+-->
 
-Steps to Reproduce (for bugs)
------------------------------
-<!--- Provide a link to a live example, or an unambiguous set of steps to -->
-<!--- reproduce this bug. Include code to reproduce, if relevant -->
+
+<!-- ---------------------------------------------------------- -->
+<!-- Information bellow this line is *ONLY* for bug reports.    -->
+<!-- Delete these sections if you're filing a Feature request.  -->
+<!-- ---------------------------------------------------------- -->
+Steps to Reproduce
+------------------
+<!--
+Provide a link to a live example, or an unambiguous set of steps to
+reproduce this bug. Include code to reproduce, if relevant.
+-->
 1.
 2.
 3.
-4.
+
 
 Context
 -------
-<!--- How has this issue affected you? What are you trying to accomplish? -->
-<!--- Providing context helps us come up with a solution that is most useful in the real world -->
-
-Your Environment
-----------------
-<!--- Include as many relevant details about the environment you experienced the bug in -->
-* Version used:
-* Operating System and version (desktop or mobile):
+<!--
+How has this issue affected you? What are you trying to accomplish?
+Providing context helps us come up with a solution that is most useful
+in the real world.
+-->

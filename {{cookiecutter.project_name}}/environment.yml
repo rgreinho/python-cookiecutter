@@ -1,9 +1,0 @@
-name: conda-venv
-channels:
-    - defaults
-    - conda-forge
-dependencies:
-    - numpy
-    - pandas
-    - scikit-learn
-    - scipy

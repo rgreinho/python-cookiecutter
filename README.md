@@ -9,25 +9,15 @@ It comes with the following features:
 * [Anyconfig](https://github.com/ssato/python-anyconfig): Read and validate configuration file
 * [CircleCI](https://circleci.com/): Continuous Integration for your project
 * [Click](http://click.pocoo.org/6/): Create beautiful command line interfaces
-
   * TAB completion support
-* [coala](https://coala.io/): Implement static analyzers through the use of:
-
-  * Git Commit format checker
-  * Pin Requirements checker
-  * Pycodestyle
-  * PyDocStyle
-  * PyFlakes
-  * PyLint
-
-* [Conda](https://conda.io/docs/index.html): Support for conda package manager
 * [Docker](https://www.docker.com/): Containerize the project
 * [EditorConfig](http://editorconfig.org/): Maintain consistent coding styles between different editors
 * [Github templates](https://github.com/blog/2111-issue-and-pull-request-templates): Create consistent [Issues](https://help.github.com/articles/creating-an-issue-template-for-your-repository/) and [Pull Requests](https://help.github.com/articles/creating-a-pull-request-template-for-your-repository/)
+* [Mergify](https://mergify.io/): Automatically merge your PRs
 * [PBR](http://docs.openstack.org/developer/pbr): To easily package your application
 * [Pytest](https://docs.pytest.org/en/latest/): Better unit testing
 * [Sphinx](http://sphinx-doc.org/): Documentation ready for generation and publication
-* [Tox](http://testrun.org/tox/): Easily setup tests for Python 3.6
+* [Tox](http://testrun.org/tox/): Easily setup tests for Python.
 * [YAPF](https://github.com/google/yapf): Automatic code formatting
 
 ## Usage
@@ -86,10 +76,10 @@ This is not really necessary as the project will be fully containerized using Do
 make venv
 ```
 
-### Running the tests
+### Running all the tests
 
 ```
-make ci-linters ci-docs ci-tests
+make ci
 ```
 
 ### Generating the documentation
