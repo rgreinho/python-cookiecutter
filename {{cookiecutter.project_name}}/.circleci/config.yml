@@ -1,70 +1,90 @@
+working_directory: &working_directory
+  ~/project
+
+defaults: &defaults
+  docker:
+    - image: circleci/python:3.7.0-stretch-node
+  working_directory: *working_directory
+
+repo_cache_key: &repo_cache_key
+  deps-{{ '{{' }} checksum "requirements.txt" {{ '}}' }}-{{ '{{' }} checksum "requirements-dev.txt" {{ '}}' }}
+
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/python:3.6.2
-
-    working_directory: ~/repo
-
+  prepare:
+    <<: *defaults
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
-          keys:
-          - deps-{{ '{{' }} checksum "requirements.txt" {{ '}}' }}
-          # fallback to using the latest cache if no exact match is found
-          - deps-
-
+          keys: *repo_cache_key
       - run:
-          name: install dependencies
+          name: prepare environment
           command: make venv
-
       - save_cache:
           paths:
             - ./venv
-          key: deps-{{ '{{' }} checksum "requirements.txt" {{ '}}' }}
+          key: *repo_cache_key
+      - persist_to_workspace:
+          root: *working_directory
+          paths: venv/*
 
-
-      # This test is temporary. As of 2017/10/30, a bug in the coala:0.11 docker image prevents us to use the YapfBear
-      # for testing the formating. Therefore the check was added here until they release the next version (and
-      # hopefully fix the issue).
+  format:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
       - run:
-          name: check the formatting (temporary due to coala bug)
-          command: |
-            . venv/bin/activate
-            tox -e yapf
+          name: check formatter
+          command: make ci-format
 
+  lint:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - run:
+          name: run linters
+          command: make ci-linters
+
+  docs:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - run:
+          name: run doc tests
+          command: make ci-docs
+
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
       - run:
           name: run unit tests
           command: |
-            . venv/bin/activate
-            tox
-
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
-
-      - run:
-          name: run doc tests
-          command: |
-            . venv/bin/activate
-            tox -e docs
-  coala:
-    docker:
-      - image: coala/base:0.11
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-      - run:
-          name: Run coala
-          command: coala --ci
+            make ci-tests
+      - store_test_results:
+          path: test-results
 
 workflows:
   version: 2
   gates:
     jobs:
-      - coala
-      - build
+      - prepare
+      - format:
+          requires:
+            - prepare
+      - lint:
+          requires:
+            - prepare
+      - docs:
+          requires:
+            - prepare
+      - test:
+          requires:
+            - prepare

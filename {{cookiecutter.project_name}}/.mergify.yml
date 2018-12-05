@@ -1,0 +1,13 @@
+rules:
+  default:
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+      required_status_checks:
+        contexts:
+        - 'ci/circleci: docs'
+        - 'ci/circleci: format'
+        - 'ci/circleci: format'
+        - 'ci/circleci: lint'
+        - 'ci/circleci: prepare'
+        - 'ci/circleci: test'
