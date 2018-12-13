@@ -2,22 +2,13 @@
 import os
 
 import click
-from pbr import version
-import pkg_resources
 
-from {{ cookiecutter.project_name }}.cli.base import AbstractCommand
 from {{ cookiecutter.project_name }} import config
+from {{ cookiecutter.project_name }}.cli.base import AbstractCommand
+from {{ cookiecutter.project_name }}.core.version import detect_from_metadata
 
 # Retrieve the project version from packaging.
-try:
-    try:
-        version_info = version.VersionInfo('{{ cookiecutter.project_name }}')
-        __version__ = version_info.release_string()
-    except pkg_resources.DistributionNotFound:
-        distribution_info = pkg_resources.get_distribution('pip')
-        __version__ = distribution_info.version
-except Exception:
-    __version__ = None
+__version__ = detect_from_metadata('{{ cookiecutter.project_name }}')
 
 APP_NAME = '{{ cookiecutter.project_name }}'
 
