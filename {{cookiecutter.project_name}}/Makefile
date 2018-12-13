@@ -11,6 +11,7 @@ TAG ?= $(shell git describe)
 # Misc.
 TOPDIR = $(shell git rev-parse --show-toplevel)
 YAPF_EXCLUDE=*.eggs/*,*.tox/*,*venv/*
+TWINE_REPO =
 
 # Docker.
 DOCKERFILE = Dockerfile$(SUFFIX)
@@ -72,10 +73,14 @@ clean-repo: ## Remove unwanted files in project (!DESTRUCTIVE!)
 
 .PHONY: clean-docker
 clean-docker: ## Remove all docker images built for this project (!DESTRUCTIVE!)
-	@docker image rm -f $$(docker image ls --filter reference=$(DOCKER_IMAGE) -q)
+	@docker image rm -f $$(docker image ls --filter reference=$(DOCKER_IMAGE) -q) || true
 
 .PHONY: dist
 dist: wheel ## Package the application
+
+.PHONY: dist-upload
+dist-upload:
+	twine upload $(TWINE_REPO) dist/*
 
 .PHONY: docs
 docs: ## Build documentation

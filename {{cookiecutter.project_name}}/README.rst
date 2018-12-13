@@ -6,6 +6,9 @@
 Quickstart
 ----------
 
+Developer setup
+---------------
+
 Install `docker`_.
 
 Setup the full environment::

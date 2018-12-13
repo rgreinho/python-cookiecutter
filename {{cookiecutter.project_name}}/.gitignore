@@ -16,6 +16,7 @@
 .idea/
 .installed.cfg
 .tox/
+.vscode/
 __pycache__/
 build/
 coverage.xml

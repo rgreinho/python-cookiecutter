@@ -1,4 +1,4 @@
-"""{{cookiecutter.project_short_description}}"""
+"""{{cookiecutter.project_short_description}}."""
 from {{ cookiecutter.project_name }}.cli.cli import cli
 
 # pylint: disable=no-value-for-parameter
