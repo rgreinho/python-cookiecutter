@@ -20,8 +20,8 @@ ci-prep-env: venv # Prep the test environment
 	. venv/bin/activate && cd $(TESTDIR) && cookiecutter --no-input --overwrite-if-exists ../
 	cd $(TESTDIR)/project && make
 
-.PHONY: ci-tests
-ci-tests: ci-prep-env ## Run the unit tests
+.PHONY: test
+test: ci-prep-env ## Run the unit tests
 	cd $(TESTDIR)/project && make venv ci
 
 .PHONY: clean
