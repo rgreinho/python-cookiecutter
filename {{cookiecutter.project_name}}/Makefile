@@ -46,23 +46,19 @@ build-docker: Dockerfile ## Build a docker development image
 	@docker build -t $(DOCKER_IMAGE_FULL) .
 
 .PHONY: ci
-ci: ci-docs ci-linters ci-tests
+ci: docs lint test
 
-.PHONY: ci-docs
-ci-docs: ## Ensure the documentation builds
+.PHONY: docs
+docs: ## Ensure the documentation builds
 	$(RUN_CMD) tox -e docs
 
-.PHONY: ci-format
-ci-format: ## Check the code formatting using YAPF
-	$(RUN_CMD) tox -e yapf
-
-.PHONY: ci-linters
-ci-linters:  ## Run the static analyzers
+.PHONY: lint
+lint:  ## Run the static analyzers
 	$(RUN_CMD) tox -e flake8,pydocstyle,pylint,yapf
 
-.PHONY: ci-tests
-ci-tests: ## Run the unit tests
-	$(RUN_CMD) tox
+.PHONY: lint-format
+lint-format: ## Check the code formatting using YAPF
+	$(RUN_CMD) tox -e yapf
 
 .PHONY: clean
 clean: clean-repo clean-docker ## Clean everything (!DESTRUCTIVE!)
@@ -82,13 +78,13 @@ dist: wheel ## Package the application
 dist-upload:
 	twine upload $(TWINE_REPO) dist/*
 
-.PHONY: docs
-docs: ## Build documentation
-	$(RUN_CMD) python setup.py build_sphinx
-
 .PHONY: format
 format: ## Format the codebase using YAPF
 	$(RUN_CMD) yapf -r -i -e{$(YAPF_EXCLUDE)} .
+
+.PHONY: test
+test: ## Run the unit tests
+	$(RUN_CMD) tox
 
 setup: venv ## Setup the full environment (default)
 

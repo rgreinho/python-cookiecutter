@@ -1,32 +1,9 @@
 """Base class for all the `processor-cli` commands."""
 import abc
-import logging
 import sys
 
+from loguru import logger
 from tabulate import tabulate
-
-
-def getLogLevel(level):
-    """
-    Return a Loglevel matching a string.
-
-    If no level matches, logging.NOTSET is returned.
-
-    :param str level: string representing the log level
-    :returns: a log level.
-    """
-    levels = {
-        'CRITICAL': logging.CRITICAL,
-        'ERROR': logging.ERROR,
-        'WARNING': logging.WARNING,
-        'INFO': logging.INFO,
-        'DEBUG': logging.DEBUG,
-        'NOTSET': logging.NOTSET
-    }
-
-    if not level:
-        return logging.NOTSET
-    return levels.get(level.upper(), logging.NOTSET)
 
 
 class AbstractCommand:
@@ -47,12 +24,6 @@ class AbstractCommand:
         # Store the command arguments.
         self.args = command_args or {}
 
-        # Retrieve the the logger.
-        self.logger = logging.getLogger(__name__)
-        logging.basicConfig(format='[%(levelname).4s] %(asctime)s - %(message)s', datefmt='%Y/%m/%d %I:%M:%S %p')
-        level = getLogLevel(self.global_args.get('log_level'))
-        self.logger.setLevel(level)
-
         # Set display parameters.
         self.data = []
         self.headers = []
@@ -62,8 +33,7 @@ class AbstractCommand:
         try:
             sys.exit(self._execute())
         except Exception as e:
-            self.logger.error(e)
-            self.logger.exception(e)
+            logger.exception(e)
             sys.exit(1)
 
     @abc.abstractmethod
