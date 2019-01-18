@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update the dependencies.
   - Adjust pytest version do work with `pytest-socket`.
 - Adjust the CircleCI configuration.
+  - Use Python 3.7.0
+- Move the tests directory to the root of the project.
 
 [//]: # (Release links)
 
