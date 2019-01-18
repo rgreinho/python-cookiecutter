@@ -1,6 +1,8 @@
 [run]
 omit =
     *__init__.py
+    {{ cookiecutter.project_name }}/cli/*
+    {{ cookiecutter.project_name }}/config.py
+    {{ cookiecutter.project_name }}/core/version.py
     {{ cookiecutter.project_name }}/main.py
     {{ cookiecutter.project_name }}/tests/*
-    {{ cookiecutter.project_name }}/cli/cli.py
