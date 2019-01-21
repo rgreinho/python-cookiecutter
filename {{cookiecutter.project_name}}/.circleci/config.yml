@@ -70,21 +70,59 @@ jobs:
             make test
       - store_test_results:
           path: test-results
+  publish:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - add_ssh_keys:
+          fingerprints:
+            - "00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
+      - run:
+          name: Configure git
+          command: |
+            git config --global user.email "circleci@circleci.com"
+            git config --global user.name "CircleCI"
+      - run:
+          name: Build the documentation
+          command: make docs
+      - run:
+          name: Publish the docs
+          command: make publish
 
 workflows:
   version: 2
   gates:
     jobs:
-      - prepare
+      - prepare:
+          filters:
+            tags:
+              only: /.*/
       - format:
           requires:
             - prepare
       - lint:
           requires:
             - prepare
+          filters:
+            tags:
+              only: /.*/
       - docs:
           requires:
             - prepare
+          filters:
+            tags:
+              only: /.*/
       - test:
           requires:
             - prepare
+      - publish:
+          requires:
+            - docs
+            - lint
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /\d\.\d\.\d/

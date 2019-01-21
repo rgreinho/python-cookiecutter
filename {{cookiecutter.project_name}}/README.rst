@@ -3,23 +3,15 @@
 
 {{ cookiecutter.project_short_description }}
 
+Installation
+------------
+
+::
+
+  pip install {{ cookiecutter.project_name }}
+
 Quickstart
 ----------
 
-Developer setup
----------------
-
-Install `docker`_.
-
-Setup the full environment::
-
-  make
-
-Setup a local dev environment::
-
-  make venv
-  source venv/bin/activate
-
-Use `make help` to see all the available make targets.
-
-.. _`docker`: https://docs.docker.com/engine/understanding-docker/
+Examples
+^^^^^^^^
