@@ -49,15 +49,15 @@ build-docker: Dockerfile ## Build a docker development image
 ci: docs lint test
 
 .PHONY: docs
-docs: ## Ensure the documentation builds
+docs: venv ## Ensure the documentation builds
 	$(RUN_CMD) tox -e docs
 
 .PHONY: lint
-lint:  ## Run the static analyzers
+lint: venv ## Run the static analyzers
 	$(RUN_CMD) tox -e flake8,pydocstyle,pylint,yapf
 
 .PHONY: lint-format
-lint-format: ## Check the code formatting using YAPF
+lint-format: venv ## Check the code formatting using YAPF
 	$(RUN_CMD) tox -e yapf
 
 .PHONY: clean
@@ -79,11 +79,15 @@ dist-upload:
 	twine upload $(TWINE_REPO) dist/*
 
 .PHONY: format
-format: ## Format the codebase using YAPF
+format: venv ## Format the codebase using YAPF
 	$(RUN_CMD) yapf -r -i -e{$(YAPF_EXCLUDE)} .
 
+publish: ## Publish the documentation to GitHub pages
+	git rev-parse --verify --quiet gh-pages
+	@bash $(TOPDIR)/.circleci/publish.sh
+
 .PHONY: test
-test: ## Run the unit tests
+test: venv ## Run the unit tests
 	$(RUN_CMD) tox
 
 setup: venv ## Setup the full environment (default)
@@ -101,5 +105,5 @@ venv/bin/activate: requirements.txt
 		&& pip install -e .
 
 .PHONY: wheel
-wheel: ## Build a wheel package
+wheel: venv ## Build a wheel package
 	$(RUN_CMD) python setup.py bdist_wheel
