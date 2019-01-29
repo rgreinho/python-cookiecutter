@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Setup `loguru` for logging.
 - Add a hook to initialize the `gh-pages` branch.
 - Add a script and a `Makefile` target to update the documentation in the `gh-pages` branch.
+- Add support for pytest-xdist to run tests in a distributed fashion
 
 ### Changed
 
@@ -26,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move the tests directory to the root of the project.
 - Restructure the documentation in a more sensible way.
 - Use the [aiohttp](https://github.com/aio-libs/aiohttp-theme) theme for the documentation.
+
+### Removed
+
+- Remove the `bootstrap-theme` support for Sphinx
 
 [//]: # (Release links)
 
