@@ -11,7 +11,7 @@ Table of contents
 .. toctree::
    :maxdepth: 2
 
-   README
+   readme
    usage
    CHANGELOG
    contributing
