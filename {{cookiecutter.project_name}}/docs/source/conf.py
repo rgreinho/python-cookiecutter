@@ -70,7 +70,7 @@ add_module_names = True
 # Sphinx are currently 'default' and 'sphinxdoc'.
 html_theme_path = [aiohttp_theme.get_path()]
 html_theme = 'aiohttp_theme'
-# html_static_path = ['static']
+html_static_path = ['_static']
 html_theme_options = {
     'show_related': True,
     'page_width': '80%',
