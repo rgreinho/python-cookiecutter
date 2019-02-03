@@ -92,12 +92,12 @@ test: venv ## Run the unit tests
 
 setup: venv ## Setup the full environment (default)
 
-venv: venv/bin/activate ## Setup local venv
+venv: venv/bin/python ## Setup local venv
 	echo "[ -f $(VENV_BIN)/postactivate ] && . $(VENV_BIN)/postactivate" >> $(VENV_BIN)/activate
 	echo "export PYTHONBREAKPOINT=bpdb.set_trace" > $(VENV_BIN)/postactivate
 	echo "unset PYTHONBREAKPOINT" > $(VENV_BIN)/predeactivate
 
-venv/bin/activate: requirements.txt
+venv/bin/python: requirements.txt
 	test -d venv || python3 -m venv venv
 	. venv/bin/activate \
 		&& pip install --upgrade pip setuptools \

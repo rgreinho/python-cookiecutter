@@ -27,6 +27,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Move the tests directory to the root of the project.
 - Restructure the documentation in a more sensible way.
 - Use the [aiohttp](https://github.com/aio-libs/aiohttp-theme) theme for the documentation.
+- Use a custom CSS file to emphasize keywords in the reference documentation and keywords between backticks.
+
+### Fixed
+
+- Fix the `Makefile` to prevent the `venv` target to run unnecessarily.
 
 ### Removed
 

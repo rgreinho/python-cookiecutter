@@ -6,3 +6,8 @@ code.descname {
   color: #3cba54;
   }
 
+  cite {
+    color: #4885ed;
+    font-weight: bold;
+    font-style: normal;
+  }
