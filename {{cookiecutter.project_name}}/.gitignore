@@ -15,6 +15,7 @@
 .eggs/
 .idea/
 .installed.cfg
+.nox/
 .tox/
 .vscode/
 __pycache__/

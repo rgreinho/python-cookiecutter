@@ -7,7 +7,7 @@ defaults: &defaults
   working_directory: *working_directory
 
 repo_cache_key: &repo_cache_key
-  deps-{{ '{{' }} checksum "requirements.txt" {{ '}}' }}-{{ '{{' }} checksum "requirements-dev.txt" {{ '}}' }}
+  deps-{{ '{{' }} checksum "requirements.txt" {{ '}}' }}-{{ '{{' }} checksum "requirements-dev.txt" {{ '}}' }}.0
 
 version: 2
 jobs:
@@ -16,17 +16,25 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: *repo_cache_key
+          key: *repo_cache_key
       - run:
           name: prepare environment
-          command: make venv
+          command: |
+            python -m venv venv
+            source venv/bin/activate
+            pip install --upgrade pip
+            pip install invoke nox coveralls
+            nox --install-only -s lint-format lint docs test-units test-integrations
       - save_cache:
           paths:
-            - ./venv
+            - .nox
+            - venv
           key: *repo_cache_key
       - persist_to_workspace:
           root: *working_directory
-          paths: venv/*
+          paths:
+            - .nox/*
+            - venv/*
 
   format:
     <<: *defaults
@@ -35,8 +43,10 @@ jobs:
       - attach_workspace:
           at: *working_directory
       - run:
-          name: check formatter
-          command: make lint-format
+          name: check format
+          command: |
+            source venv/bin/activate
+            nox -s lint-format
 
   lint:
     <<: *defaults
@@ -46,7 +56,9 @@ jobs:
           at: *working_directory
       - run:
           name: run linters
-          command: make lint
+          command: |
+            source venv/bin/activate
+            nox -s lint
 
   docs:
     <<: *defaults
@@ -56,9 +68,11 @@ jobs:
           at: *working_directory
       - run:
           name: run doc tests
-          command: make docs
+          command: |
+            source venv/bin/activate
+            nox -s docs
 
-  test:
+  test-units:
     <<: *defaults
     steps:
       - checkout
@@ -67,9 +81,23 @@ jobs:
       - run:
           name: run unit tests
           command: |
-            make test
+            source venv/bin/activate
+            nox -s test-units
+            coveralls
       - store_test_results:
           path: test-results
+  test-integrations:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: *working_directory
+      - run:
+          name: run integration tests
+          command: |
+            source venv/bin/activate
+            nox -s test-integrations
+
   publish:
     <<: *defaults
     steps:
@@ -86,10 +114,12 @@ jobs:
             git config --global user.name "CircleCI"
       - run:
           name: Build the documentation
-          command: make docs
+          command: |
+            source venv/bin/activate
+            nox -s docs
       - run:
           name: Publish the docs
-          command: make publish
+          command: inv publish
 
 workflows:
   version: 2
@@ -102,6 +132,9 @@ workflows:
       - format:
           requires:
             - prepare
+          filters:
+            tags:
+              only: /.*/
       - lint:
           requires:
             - prepare
@@ -114,15 +147,36 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - test:
+      - test-units:
           requires:
             - prepare
+          filters:
+            tags:
+              only: /.*/
+      - test-integrations:
+          requires:
+            - prepare
+          filters:
+            tags:
+              only: /.*/
       - publish:
           requires:
             - docs
             - lint
           filters:
             branches:
-              only: master
+              ignore: /.*/
             tags:
-              only: /\d\.\d\.\d/
+              only: /^\d+\.\d+\.\d+$/
+      - upload:
+          requires:
+            - format
+            - lint
+            - test-units
+            - test-integrations
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+
