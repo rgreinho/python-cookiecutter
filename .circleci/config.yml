@@ -12,12 +12,14 @@ jobs:
       - run:
           name: Prepare the test environment
           command: |
-            git config --global user.email "test@example.com"
-            git config --global user.name "Test user"
+            git config --global user.email "circleci@circleci.com"
+            git config --global user.name "CircleCI"
             pyenv versions
             pyenv global 3.7.0
-            make ci-prep-env
+            pip install --upgrade pip
+            pip install invoke nox
+            inv ci-prep-env
 
       - run:
           name: Run the tests
-          command: make test
+          command: inv test
