@@ -1,10 +1,14 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  classic:
     machine:
       image: circleci/classic:201808-01
+    working_directory: ~/project
 
-    working_directory: ~/repo
+jobs:
+  build:
+    executor: classic
 
     steps:
       - checkout

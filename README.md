@@ -5,7 +5,7 @@ This is an opinionated [cookiecutter](https://github.com/audreyr/cookiecutter) t
 It comes with the following features:
 
 * Free software: MIT license
-* All the administrative tasks are defined in the `Makefile`
+* All the administrative tasks are defined in the `invoke` and `nox` scripts
 * [Anyconfig](https://github.com/ssato/python-anyconfig): Read and validate configuration file
 * [CircleCI](https://circleci.com/): Continuous Integration for your project
   * Check the formating
@@ -26,6 +26,7 @@ It comes with the following features:
 * [Pytest](https://docs.pytest.org/en/latest/): Better unit testing
   * [coverage](https://github.com/pytest-dev/pytest-cov): plugin that produces coverage reports
   * [mock](https://github.com/pytest-dev/pytest-mock): plugin that installs a mocker fixture
+  * [rerunfailures](https://github.com/pytest-dev/pytest-rerunfailures): plugin that re-runs failed tests up to -n times to eliminate flakey failures
   * [socket](https://github.com/miketheman/pytest-socket): plugin that disables or restricts socket calls to ensure network calls are prevented.
   * [xdist](https://github.com/pytest-dev/pytest-xdist): distributed testing plugin
 * [Sphinx](http://sphinx-doc.org/): Documentation ready for generation and publication
@@ -33,7 +34,6 @@ It comes with the following features:
   * badges support for PyPI, CircleCI and Coveralls.io
   * [markdown](https://www.sphinx-doc.org/en/master/usage/markdown.html) support in addition to reStructured
   * [sphinx click](https://github.com/click-contrib/sphinx-click) to automatically generate the CLI documentation
-* [Tox](http://testrun.org/tox/): Easily setup tests for Python.
 * [Twine](https://github.com/pypa/twine): Easily publish your package on PyPI
 * [YAPF](https://github.com/google/yapf): Automatic code formatting
 
@@ -44,7 +44,7 @@ It comes with the following features:
 Install the latest Cookiecutter if you haven't installed it yet:
 
 ```bash
-pip install cookiecutter
+pip install cookiecutter invoke nox
 ```
 
 Generate a Python project:
@@ -53,12 +53,12 @@ Generate a Python project:
 cookiecutter https://github.com/rgreinho/python-cookiecutter
 ```
 
-Congratulations! Now that your project is fully generated, you have access to a lot of features, mostly using the `Makefile`.
+Congratulations! Now that your project is fully generated, you have access to a lot of features, mostly using `Invoke` and `Nox`.
 
 To run the initial setup, run:
 
 ```bash
-make
+inv
 ```
 
 ### Pushing to Github
@@ -82,13 +82,13 @@ To end all holy wars about formatting, you should use a formatter. [YAPF](https:
 To check whether you code is formatted correctly, run:
 
 ```bash
-make lint-format
+inv lint-format
 ```
 
 And to reformat the entire project use the following:
 
 ```bash
-make format
+inv format
 ```
 
 ### Creating a virtual environment for the project
@@ -96,13 +96,13 @@ make format
 This is not really necessary as the project will be fully containerized using Docker, but in some cases you might want to setup a local virtual environment for your project.
 
 ```bash
-make venv
+inv venv
 ```
 
 ### Running all the tests
 
 ```bash
-make ci
+inv ci
 ```
 
 ### Generating the documentation
@@ -112,7 +112,7 @@ The documentation is generated using [Sphinx](http://sphinx-doc.org/). All your 
 To generate the documentation run:
 
 ```bash
-make docs
+inv docs
 ```
 
 ### Packaging the application
@@ -120,7 +120,7 @@ make docs
 To create a wheel package of the application:
 
 ```bash
-make dist
+inv dist
 ```
 
 #### setup.cfg
@@ -132,5 +132,5 @@ The dependencies of the application are located in the `requirements.txt` file. 
 ### Cleaning up
 
 ```bash
-make clean
+inv clean
 ```

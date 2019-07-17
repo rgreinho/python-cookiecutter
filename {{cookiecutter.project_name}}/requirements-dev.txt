@@ -1,4 +1,4 @@
-Faker==1.0.7
+Faker==2.0.0
 Sphinx==2.1.2
 aiohttp-theme==0.1.5
 bpython
