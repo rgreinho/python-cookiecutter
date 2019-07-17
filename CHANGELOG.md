@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[1.5.0]] - 2019-07-17
+
+## Changed
+
+- Replace `Makefiles` with [Invoke](https://github.com/pyinvoke/invoke) and [Nox](https://nox.thea.codes) scripts.
+- Remove `Tox`.
+- Update CircleCI configurations for 2.1.
+- Update the dependecies
+
+## [[1.4.0]] - 2019-02-03
+
 ### Added
 
 - Add a `CHANGELOG.md` file.
@@ -38,5 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove the `bootstrap-theme` support for Sphinx
 
 [//]: # (Release links)
+[1.4.0]: https://github.com/rgreinho/python-cookiecutter/releases/tag/1.4.0
+[1.5.0]: https://github.com/rgreinho/python-cookiecutter/releases/tag/1.5.0
 
 [//]: # (Issue/PR links)
