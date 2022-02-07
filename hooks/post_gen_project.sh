@@ -11,7 +11,7 @@ git symbolic-ref HEAD refs/heads/gh-pages
 rm .git/index
 git clean -fdx
 touch .nojekyll
-git checkout master .gitignore
+git checkout main .gitignore
 git add .
 git commit -m "Initialize gh-pages"
-git checkout master
+git checkout main
